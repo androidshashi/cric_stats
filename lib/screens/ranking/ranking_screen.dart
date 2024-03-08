@@ -1,10 +1,9 @@
 import 'package:cric_stats/core/constants/app_string.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cric_stats/core/utils/utils.dart';
+import 'package:cric_stats/screens/cricket_format_screen.dart';
+import 'package:cric_stats/view_models/ranking_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import 'package:group_button/group_button.dart';
+import 'package:provider/provider.dart';
 
 class RankingScreen extends StatefulWidget {
   const RankingScreen({super.key});
@@ -15,55 +14,46 @@ class RankingScreen extends StatefulWidget {
 
 class _TeamsScreenState extends State<RankingScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<RankingViewModel>().fetchRankingData(context);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppString.rankings),
-      ),
-      body: Column(
-        children: [
-          GroupButton(
-              options:
-                  GroupButtonOptions(borderRadius: BorderRadius.circular(2.r)),
-              buttons: [
-                AppString.batsmen,
-                AppString.bowlers,
-                AppString.allRounders,
-                AppString.teams
-              ]),
-          Gap(20.h),
-          Expanded(child: _buildPlayersList())
-        ],
-      ),
-    );
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text(AppString.rankings),
+              bottom: _buildTabBar(),
+              flexibleSpace: Container(
+                decoration: gradientDecoration,
+              ),
+            ),
+            body: const CricketFormatScreen()));
   }
 
-  Widget _buildPlayersList() {
-    return ListView.builder(
-      itemBuilder: (context, index) => playerRowWidget(index),
-      itemCount: 20,
-    );
-  }
-
-  Widget playerRowWidget(int index,
-      {String? rank, String? players, String? points}) {
-    return Container(
-      color: index % 2 == 0 ? Colors.grey.shade200 : Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      child: Row(
-        children: [
-          Expanded(
-              child: Text(
-            rank ?? AppString.rank.toUpperCase(),
-            style: Theme.of(context).textTheme.labelLarge,
-          )),
-          Expanded(
-            flex: 3,
-            child: Text(players ?? AppString.players.toUpperCase()),
+  /// Tab bar
+  PreferredSizeWidget _buildTabBar() {
+    return TabBar(
+      indicatorColor: Colors.white,
+        onTap: (value) =>
+            context.read<RankingViewModel>().setCurrentTabIndex(value),
+        tabs: const [
+          Tab(
+            text: AppString.odi,
           ),
-          Expanded(child: Text(points ?? AppString.points.toUpperCase())),
-        ],
-      ),
-    );
+          Tab(
+            text: AppString.test,
+          ),
+          Tab(
+            text: AppString.t20,
+          ),
+        ]);
   }
 }

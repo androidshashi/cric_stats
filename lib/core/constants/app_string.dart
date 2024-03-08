@@ -17,5 +17,11 @@ class AppString {
 
   static const String rankings = "Rankings";
 
+  static const String odi = "ODI";
+  static const String test = "TEST";
+  static const String t20 = "T20";
+
+  static const String ratings = "Ratings";
+
   AppString._();
 }

@@ -39,3 +39,11 @@ void debugLog(String? text) {
 void hideKeyBoard() {
   FocusManager.instance.primaryFocus?.unfocus();
 }
+
+/// Gradient decoration
+const gradientDecoration =  BoxDecoration(
+  gradient: LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: <Color>[Colors.deepPurple, Colors.purple]),
+);

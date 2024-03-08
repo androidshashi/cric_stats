@@ -7,9 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main()  {
 
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
   // Setup locator
   setupLocator();
   // Run App
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
                 title: AppString.appName,
                 theme: ThemeData(
                   colorScheme:  ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                  useMaterial3: true,
+                  useMaterial3: false,
                 ),
                 home: child,
               ),
