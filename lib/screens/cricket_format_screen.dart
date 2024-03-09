@@ -25,8 +25,8 @@ class CricketFormatScreen extends StatelessWidget {
                   viewModel.setCurrentGroupButtonIndex(index);
                 },
                 options: GroupButtonOptions(
-                  spacing: 5,
-                    runSpacing: 5,
+                  spacing: 0,
+                    runSpacing:0,
                     elevation: 0,
                     selectedShadow: [],
                     unselectedShadow: [],

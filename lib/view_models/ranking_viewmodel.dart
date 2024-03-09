@@ -4,6 +4,7 @@ import 'package:cric_stats/models/cricket_format.dart';
 import 'package:cric_stats/repositories/ranking_repo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:group_button/group_button.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class RankingViewModel extends ChangeNotifier {
   /// Ranking repo
@@ -59,7 +60,13 @@ class RankingViewModel extends ChangeNotifier {
 
   /// get the data from asset
   Future<void> fetchRankingData(BuildContext context) async {
+    context.loaderOverlay.show();
+
     final response = await _repo.fetchRankingData();
+
+    if(context.mounted){
+      context.loaderOverlay.hide();
+    }
     response.fold((error) {
       showSnackBar(context: context, content: error, success: false);
     }, (model) {

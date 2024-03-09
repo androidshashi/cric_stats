@@ -9,7 +9,8 @@ import 'package:provider/provider.dart';
 
 void main()  {
 
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Setup locator
   setupLocator();
   // Run App
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
               ),
             ],
             child: GlobalLoaderOverlay(
-              useDefaultLoading: false,
+              useDefaultLoading: true,
              overlayColor: Colors.transparent,
               duration: const Duration(milliseconds: 100),
               reverseDuration: const Duration(milliseconds: 350),
