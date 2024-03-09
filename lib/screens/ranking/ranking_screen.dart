@@ -29,7 +29,7 @@ class _TeamsScreenState extends State<RankingScreen> {
         child: Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text(AppString.rankings),
+              title:  Text(AppString.ranking.toUpperCase()),
               bottom: _buildTabBar(),
               flexibleSpace: Container(
                 decoration: gradientDecoration,

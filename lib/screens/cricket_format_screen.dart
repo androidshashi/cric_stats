@@ -28,6 +28,8 @@ class CricketFormatScreen extends StatelessWidget {
                   spacing: 5,
                     runSpacing: 5,
                     elevation: 0,
+                    selectedShadow: [],
+                    unselectedShadow: [],
                     groupingType: GroupingType.row,
                     mainGroupAlignment: MainGroupAlignment.spaceEvenly,
                     borderRadius: BorderRadius.circular(4.r)),

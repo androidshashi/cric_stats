@@ -15,13 +15,26 @@ class AppString {
   static const String players = "Players";
   static const String points = "Points";
 
-  static const String rankings = "Rankings";
+  static const String ranking = "Ranking";
 
   static const String odi = "ODI";
   static const String test = "TEST";
   static const String t20 = "T20";
 
   static const String ratings = "Ratings";
+  static const String news = "News";
+
+  static const String browseSeries = "Browse Series";
+  static const String browseTeam = "Browse Team";
+  static const String browsePlayer = "Browse Player";
+
+  static const String youTube = "YouTube";
+  static const String instagram = "Instagram";
+  static const String facebook = "Facebook";
+
+  static const String rateUs = "Rate Us";
+  static const String feedback = "Feedback";
+  static const String settings = "Settings";
 
   AppString._();
 }

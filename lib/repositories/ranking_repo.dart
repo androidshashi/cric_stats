@@ -6,7 +6,7 @@ import 'package:fpdart/fpdart.dart';
 /// Repo for fetching ranking data
 class RankingRepo {
 
-  /// Fetch ranking data @todo improve better exception handling
+  /// Fetch ranking data
   Future<Either<String, RankingDataModel>> fetchRankingData() async {
     try {
       final response = await LocalDataSource.loadDataFromAsset(
