@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:cric_stats/core/utils/utils.dart';
 import 'package:cric_stats/data/data_sources/local_data_source.dart';
 import 'package:cric_stats/models/ranking_data_model.dart';
@@ -17,7 +19,7 @@ class RankingRepoImpl  extends RankingRepo{
     try {
       final response = await _localDataSource.loadDataFromAsset(
           assetPath: 'assets/data/data.json');
-      final model = rankingDataModelFromJson(response);
+      final model = await Isolate.run(() => rankingDataModelFromJson(response)) ;
       return Right(model);
     } catch (e) {
       debugLog("Reading file Error:$e");

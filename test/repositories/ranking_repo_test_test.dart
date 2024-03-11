@@ -10,6 +10,7 @@ import '../fixtures/fixture_reader.dart';
 class MockLocalDataSource extends Mock implements LocalDataSource {}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   late RankingRepo rankingRepo;
   late LocalDataSource localDataSource;
   late String tJson;
